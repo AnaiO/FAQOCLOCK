@@ -46,6 +46,8 @@ class Role
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->createdAt = new \DateTime;
+        $this->updatedAt = new \DateTime;
     }
 
     public function getId(): ?int
