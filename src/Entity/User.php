@@ -72,6 +72,8 @@ class User
     {
         $this->answers = new ArrayCollection();
         $this->questions = new ArrayCollection();
+        $this->createdAt = new \DateTime;
+        $this->updatedAt = new \DateTime;
     }
 
     public function getId(): ?int
