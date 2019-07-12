@@ -68,8 +68,8 @@ class AppFixtures extends Fixture
             'status' => function() use($generator) { return $generator->numberBetween(0,1); },
         ]);
 
-        $populator->addEntity(Tag::class, 25, [
-            'name' => function() use($generator) { return $generator->unique()->word(1); },
+        $populator->addEntity(Tag::class, 12, [
+            'name' => function() use($generator) { return $generator->unique()->jobTitle(); },
         ]);
 
         $inserted = $populator->execute();
