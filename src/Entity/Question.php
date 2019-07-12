@@ -63,6 +63,8 @@ class Question
     {
         $this->answers = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->createdAt = new \DateTime;
+        $this->updatedAt = new \DateTime;
     }
 
     public function getId(): ?int
@@ -183,9 +185,9 @@ class Question
 
     public function addTag(Tag $tag): self
     {
-        if (!$this->tags->contains($tag)) {
+        // if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
-        }
+        // }
 
         return $this;
     }

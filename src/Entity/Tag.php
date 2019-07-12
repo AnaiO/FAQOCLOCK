@@ -41,6 +41,8 @@ class Tag
     public function __construct()
     {
         $this->questions = new ArrayCollection();
+        $this->createdAt = new \DateTime;
+        $this->updatedAt = new \DateTime;
     }
 
     public function getId(): ?int

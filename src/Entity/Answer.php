@@ -16,10 +16,6 @@ class Answer
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
 
     /**
      * @ORM\Column(type="text")
@@ -52,6 +48,12 @@ class Answer
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime;
+        $this->updatedAt = new \DateTime;
+    }
 
     public function getId(): ?int
     {
