@@ -28,8 +28,13 @@ class QuestionController extends AbstractController
     /**
      * @Route("/question/{id}", name="question_show", methods={"GET"})
      */
-    public function show(Question $question, AnswerRepository $answerRepository): Response
+    public function show(Question $question, AnswerRepository $answerRepository)
     {
+        if(!$question){
+            throw $this->createNotFoundException('La question est introuvable');
+        }
+        $answers = $answerRepository->findByQuestion($question);
+
         return $this->render('question/show.html.twig', [
             'question' => $question,
             'answers' => $answers

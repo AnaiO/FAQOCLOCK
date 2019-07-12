@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block sidebar %}
+        <div class="col-2" id="sidebar">
+            <h3>
+                Tags
+            </h3>
+                
+            {% for tag in question.tags %}
+                <div class="container pt-2">
+                    <button type="button" class="btn btn-outline-warning">{{ tag.name }}</button>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        
+            <div class=" text-white bg-dark mb-3" style="margin: 1rem auto; max-width: 80%;">
+                    <div class="card-header"><h4 class="card-title">{{ question.title }}</h4></div>
+                    <div class="card-body">
+                        <p class="card-text">{{ question.user.firstname }} {{ question.user.lastname }}</p>
+                        <p class="card-text">{{ question.content }}</p>
+                    </div>
+        </div>
+        
+        {% for answer in answers %}
+            <div class="container">
+                <div class="card">
+                     <div class="card-header">
+                              {{ answer.user.firstname }} {{ answer.user.lastname }}
+                    </div>
+                     <div class="card-body">
+                         <blockquote class="blockquote mb-0">
+                         <p>{{ answer.content }}</p>
+                         <footer class="blockquote-footer">{{ answer.createdAt|date()}}</footer>
+                         </blockquote>
+                     </div>
+                </div>    
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

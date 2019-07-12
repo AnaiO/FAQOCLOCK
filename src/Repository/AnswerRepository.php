@@ -23,11 +23,11 @@ class AnswerRepository extends ServiceEntityRepository
      * @return Answer[] Returns an array of Answer objects
      *
     */
-    public function findByMovie($movie)
+    public function findByMovie($question)
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.movie = :val')
-            ->setParameter('val', $movie)
+            ->setParameter('val', $question)
             ->orderBy('a.id', 'DESC')
             ->getQuery()
             ->getResult()
