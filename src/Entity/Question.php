@@ -163,14 +163,14 @@ class Question
         return $this;
     }
 
-    public function getAuthor(): ?User
+    public function getUser(): ?User
     {
-        return $this->author;
+        return $this->user;
     }
 
-    public function setAuthor(?User $author): self
+    public function setUser(?User $user): self
     {
-        $this->author = $author;
+        $this->user = $user;
 
         return $this;
     }

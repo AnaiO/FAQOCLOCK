@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <title>{% block title %}FAQ-O-Clock !{% endblock %}</title>
         {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
     </head>
     <body>
@@ -37,7 +39,27 @@
                         </div>
                       </nav>
         </header>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        <div class="container-fluid pt-4">
+                <div class="row">
+    
+                   {% block sidebar %}{% endblock %}
+    
+                    <div class="col-10">
+                        
+                        {# {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %} #}
+                        {# {% endfor %} #}
+    
+                        {% block body %}{% endblock %}
+    
+                    </div>
+                </div>
+            </div>
+    
     </body>
 </html>
