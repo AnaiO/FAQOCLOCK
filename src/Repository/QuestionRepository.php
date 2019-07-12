@@ -19,12 +19,12 @@ class QuestionRepository extends ServiceEntityRepository
         parent::__construct($registry, Question::class);
     }
 
-    // retourne les dernières questions avec nombre limité de résultats
-    public function lastRelease($limit){
+    //retourne les dernières questions en premier
+    public function lastRelease(){
 
         $query = $this->createQueryBuilder('q')
-                      ->orderBy('q.id', 'DESC')
-                      ->setMaxResults( $limit );
+                      ->orderBy('q.id', 'DESC');
+                      
 
         return $query->getQuery()->getResult();
     }
