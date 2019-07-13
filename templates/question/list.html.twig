@@ -19,13 +19,24 @@
 {% block body %}
     <div>
         {% for question in questions %}
-        <div class=" text-white bg-dark mb-3" style="margin: 1rem auto; max-width: 80%;">
-            <div class="card-header"><h4 class="card-title">{{ question.title }}</h4></div>
-            <div class="card-body">
-                <p class="card-text">{{ question.user.firstname }} {{ question.user.lastname }}</p>
-                <p class="card-text">{{ question.content }}</p>
-            </div>
-        </div>
+            <a href="{{ path('question_show', {'id': question.id }) }}">
+                <div class=" text-white bg-dark mb-3" style="margin: 1rem auto; max-width: 80%;">
+                    <div class="d-flex justify-content-center">
+                        {% for tag in question.tags %}
+                            <button type="button" class="btn btn-outline-warning question--tags">{{ tag.name }}</button>
+                        {% endfor %}
+                    </div>
+                    <div class="card-header  d-flex justify-content-between">
+                        <h4 class="card-title">{{ question.title }}</h4>
+                        <span>{{ question.updatedAt|date("d/m/Y H:i", "Europe/Paris") }}</span>
+                    </div>
+                    
+                    <div class="card-body">
+                        <p class="card-text">{{ question.user.firstname }} {{ question.user.lastname }}</p>
+                        <p class="card-text">{{ question.content }}</p>
+                    </div>
+                </div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}

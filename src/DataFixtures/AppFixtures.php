@@ -12,9 +12,19 @@ use App\Entity\Question;
 use Faker\ORM\Doctrine\Populator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+
+    private $passwordEncoder;
+   
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+       
+    }
+
     public function load(ObjectManager $manager)
     {
         //3 main user roles
@@ -41,8 +51,9 @@ class AppFixtures extends Fixture
         $userAdmin->setRole($roleAdmin);
         $userAdmin->setFirstname('admin');
         $userAdmin->setLastname('admin');
-        $userAdmin->setPassword('admin');
-        $userAdmin->setEmail($generator->unique()->email());
+        $encodedPassword = $this->passwordEncoder->encodePassword($userAdmin, 'admin');
+        $userAdmin->setPassword($encodedPassword);
+        $userAdmin->setEmail('admin@admin.com');
         $userAdmin->setImage($generator->unique()->imageUrl());
         $manager->persist($userAdmin);
 

@@ -1,13 +1,28 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User:
+            algorithm: 'argon2i'
+             # maximum memory (in KiB) that may be used to compute the Argon2 hash
+            memory_cost: 1024
+            #  number of times the Argon2 hash algorithm will be run
+            time_cost: 2
+            # number of threads to use for computing the Argon2 hash
+            threads: 2
     providers:
-        in_memory: { memory: ~ }
+        users:
+            entity:
+                class: 'App\Entity\User'
+                property: 'email'
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

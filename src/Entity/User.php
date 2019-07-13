@@ -2,14 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -74,6 +76,7 @@ class User
         $this->questions = new ArrayCollection();
         $this->createdAt = new \DateTime;
         $this->updatedAt = new \DateTime;
+        $this->status = 1;
     }
 
     public function getId(): ?int
@@ -237,5 +240,31 @@ class User
         }
 
         return $this;
+    }
+    
+    public function getUsername()
+    {
+        return $this->firstname;
+    }
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function getRoles(): array // fonction necessaire pour security.yml => ceci n'est pas un getter en relation avec ma BDD
+    {
+        $roles = [];
+        if(!is_null($this->role)){
+            $roles[] = $this->role->getCode(); // ici on stockera le code associé dans la BDD dans le genre ROLE_USER, ROLE_ADMIN, ROLE_MEMBER etc ...
+        } else {
+            $roles[] = 'ROLE_USER'; // par defaut si notre utilisateur a été stocké dans role on retournera role_user pour que symfony ne plante pas
+        }
+        return $roles;
+    }
+
+    public function eraseCredentials()
+    {
     }
 }

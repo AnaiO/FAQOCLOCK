@@ -14,7 +14,7 @@ class QuestionController extends AbstractController
     /**
      * @Route("/", name="question_list", methods={"GET"})
      */
-    public function list(QuestionRepository $questionRepository, TagRepository $tagRepository): Response
+    public function list(QuestionRepository $questionRepository, TagRepository $tagRepository)
     {
         $questions = $questionRepository->lastRelease();
         $tags = $tagRepository->findAll();

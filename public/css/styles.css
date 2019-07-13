@@ -3,3 +3,14 @@
     background-color: gold;
     margin: 1rem;
 }
+
+.question--tags{
+    height: 1.2rem;
+    font-size: 0.8rem;
+    margin: 0.5rem;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
