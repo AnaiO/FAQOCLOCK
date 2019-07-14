@@ -3,12 +3,8 @@
 | `/` | question_list | Liste des questions | GET | QuestionController | list | Page d'accueil avec les questions récentes |
 | `/question/[id]` | question_show | La question avec ses réponses | GET | QuestionController | show | question et ses réponses selon son id |
 | `/question/tag/{name}` | questions_tag | liste des questions selon un tag | GET | QuestionController | listByTag ||
-|`/question/ask`|question_ask|Formulaire création de question|POST|QuestionController|form|Même méthode pour création et edit de la question|
-|`/question/[id]/edit`|question_edit|Formulaire pour edit une question|POST|QuestionController|form||
-|`/question/[id]/delete`|question_delete|Supprimer une question|POST|QuestionController|delete||
-|`/question/[id]/answer/submit`|answer_submit|Répondre à une question|POST|AnswerController|form||
-|`/question/[id]/answer/[id]/edit`|answer_edit|Modifier sa réponse à une question|POST|AnswerController|form||
-|`/question/[id]/answer/[id]/delete`|answer_delete|Supprimer une réponse à une question|POST|AnswerController|delete||
+|`/user/question/ask`|question_ask|Formulaire création de question|POST|QuestionController|form|Même méthode pour création et edit de la question|
+|`/user/question/{id}/answer`|answer_submit|Répondre à une question|POST|AnswerController|answer||
 |`/signup`|sign_up|formulaire d'inscription|GET/POST|UserController|signUp||
 `/login`|log_in|Formulaire de connexion|GET/POST|UserController|login||
 `/profile`|profile_show|Informations du compte et liste questions et réponses de l'utilisateur|GET|UserController|show||

@@ -12,29 +12,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/signup", name="signup")
-     */
-    public function signUp(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $user = new User;
-        $form = $this->createForm(SignUpType::class, $user);
-        $form->handleRequest($request);
+   //Profile /user/profile  show   profile_show
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($encodedPassword);
+   //edit profile /user/profile/edit   edit profile_edit
 
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($user);
-            $manager->flush();
-
-            return $this->redirectToRoute('question_list');
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView()
-        ]);
-    }
+   //evnetuelement logout plus tard
 }

@@ -10,16 +10,22 @@ security:
             # number of threads to use for computing the Argon2 hash
             threads: 2
     providers:
-        users:
+        in_database:
             entity:
-                class: 'App\Entity\User'
-                property: 'email'
+                class: App\Entity\User
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
+
+            provider: in_database
+
+            form_login:
+                login_path: login
+                check_path: login
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
@@ -37,4 +43,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/question/[id], roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/profile, roles: ROLE_USER }

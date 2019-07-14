@@ -53,6 +53,7 @@ class Answer
     {
         $this->createdAt = new \DateTime;
         $this->updatedAt = new \DateTime;
+        $this->status = 1;
     }
 
     public function getId(): ?int

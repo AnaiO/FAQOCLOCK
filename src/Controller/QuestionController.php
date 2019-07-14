@@ -58,21 +58,16 @@ class QuestionController extends AbstractController
 
      /**
       * @Route("/user/question/ask", name="question_ask", methods={"POST", "GET"})
-      * @Route("/user/question/{id}/edit", name="question_edit", requirements={"id"="\d+"})
+      * 
       */
     public function form(Question $question=null, ObjectManager $om, Request $request)
       { 
-          // instancier l'objet à remplir
+        $question = new Question;
         
-        if (!$question){
-            $question = new Question;
-        }
-        
-        // récupérer les données du form
         $form = $this->createForm(QuestionType::class, $question);
 
         if ($request->isMethod('POST')) {
-                // remplir l'objet
+                
                 $form->handleRequest($request);
             
             

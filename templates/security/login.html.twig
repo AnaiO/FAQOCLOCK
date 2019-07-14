@@ -10,8 +10,8 @@
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
                 <div class="form-group">
-                    <label for="inputEmail" class="sr-only">Email</label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                    <label for="_username" class="sr-only">Email</label>
+                    <input type="email" value="{{ last_username }}" name="_username" id="_username" class="form-control" placeholder="Email" required autofocus>
                     <small id="emailHelp" class="form-text text-muted">Nous ne partageons pas vos données personnelles.</small>
                 </div>
                 <div class="form-group">
