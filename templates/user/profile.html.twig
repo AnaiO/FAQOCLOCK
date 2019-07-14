@@ -3,12 +3,59 @@
 {% block title %}Profil{% endblock %}
 
 {% block body %}
-    {# {% for info in app.user %}
-        {{ info }}
-    {% endfor %} #}
-<a href="{{ path("profile_edit")}}"><button>Editer le profil</button></a>
-    {{ app.user.email }}
-    {{ app.user.firstname }} - {{ app.user.lastname }}
-    {{ app.user.password }}
-    <img src="{{ app.user.image }}" alt="">
+   
+    <div> <a href="{{ path("profile_edit")}}"><button>Editer le profil</button></a>
+        {{ app.user.email }}
+        {{ app.user.firstname }} - {{ app.user.lastname }}
+        {{ app.user.password }}
+        <img src="{{ app.user.image }}" alt="">
+    </div>
+    <div class="d-flex justify-content-between">
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>Mes questions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for question in app.user.questions %}
+                <tr>
+                    <td>
+                        <a href="{{ path('question_show', {'id': question.id}) }}">
+                         {{ question.title }}
+                        </a>
+                    </td>
+                  
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Vous n'avez pas encore posé de question</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mes réponses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for answer in app.user.answers %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('question_show', {'id': answer.question.id}) }}">
+                             {{ answer.content }}
+                            </a>
+                        </td>
+                      
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Vous n'avez répondu à aucune question</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
 {% endblock %}
