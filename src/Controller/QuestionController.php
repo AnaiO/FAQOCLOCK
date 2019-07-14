@@ -4,9 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Entity\Question;
+use App\Form\QuestionType;
+use Doctrine\ORM\EntityManager;
 use App\Repository\TagRepository;
 use App\Repository\AnswerRepository;
 use App\Repository\QuestionRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -27,7 +31,7 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/question/{id}", name="question_show", methods={"GET"}, requirements={"page"="\d+"})
+     * @Route("/question/{id}", name="question_show", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function show(Question $question, AnswerRepository $answerRepository)
     {
@@ -53,12 +57,42 @@ class QuestionController extends AbstractController
     }
 
      /**
-      * @Route("/question/ask", name="question_ask", methods={"POST"})
-      * @Route("/question/{id}/edit", name="question_edit", methods={"POST"})
+      * @Route("/question/ask", name="question_ask", methods={"POST", "GET"})
+      * @Route("/question/{id}/edit", name="question_edit", requirements={"id"="\d+"})
       */
-    public function form()
-      {
-          //formulaire de création et édition d'une question
+    public function form(Question $question=null, ObjectManager $om, Request $request)
+      { 
+          // instancier l'objet à remplir
+        
+        if (!$question){
+            $question = new Question;
+        }
+        
+        // récupérer les données du form
+        $form = $this->createForm(QuestionType::class, $question);
+
+        if ($request->isMethod('POST')) {
+                // remplir l'objet
+                $form->handleRequest($request);
+            
+            
+                if($form->isSubmitted() && $form->isValid()){
+                    if(!$question->getId()){
+                        $question->setCreatedAt(new \DateTime());
+                    }
+
+                   $question->setUpdatedAt(new \DateTime());
+                    $em->persist($question);
+                    $em->flush();
+                }
+
+                return $this->redirectToRoute('question_list');
+        }else{
+                return $this->render('question/form.html.twig', [
+                'form' => $form->createView()
+            ]);
+        }    
+
       }
 
       /**
