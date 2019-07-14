@@ -5,6 +5,7 @@
 | `/question/tag/{name}` | questions_tag | liste des questions selon un tag | GET | QuestionController | listByTag ||
 |`/user/question/ask`|question_ask|Formulaire création de question|POST|QuestionController|form|Même méthode pour création et edit de la question|
 |`/user/question/{id}/answer`|answer_submit|Répondre à une question|POST|AnswerController|answer||
+|`/user/question/answer/{id}/validate`|answer_validate|Valider la bonne réponse à une question|POST|AnswerController|validate||
 |`/signup`|sign_up|formulaire d'inscription|GET/POST|UserController|signUp||
 `/login`|log_in|Formulaire de connexion|GET/POST|UserController|login||
 `user/profile`|profile_show|Informations du compte et liste questions et réponses de l'utilisateur|GET|UserController|show||

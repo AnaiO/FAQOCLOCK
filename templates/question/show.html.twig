@@ -10,7 +10,7 @@
                 
             {% for tag in question.tags %}
                 <div class="container pt-2">
-                    <button type="button" class="btn btn-outline-warning">{{ tag.name }}</button>
+                    <a href="{{ path('questions_tag', {"name": tag.name }) }}"><button type="button" class="btn btn-outline-warning">{{ tag.name }}</button></a>
                 </div>
             {% endfor %}
         </div>
@@ -29,16 +29,18 @@
                     </div>
         </div>
 
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div>
             {% include 'answer/_form.html.twig' %}
         </div>
+        {% endif %}
         
         {% for answer in answers %}
         {% if answer.status %}
             <div class="container">
                 <div class="card">
-                     <div class="card-header">
-                              {{ answer.user.firstname }} {{ answer.user.lastname }}
+                     <div class="card-header d-flex justify-content-between">
+                            <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> <div><button>Valider la réponse</button></div> 
                     </div>
                      <div class="card-body">
                          <blockquote class="blockquote mb-0">
