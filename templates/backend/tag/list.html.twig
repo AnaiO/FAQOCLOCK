@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Tags{% endblock %}
+
+{% block body %}
+<a href="{{ path('backend_tag_new') }}"><button>Créer un Tag</button></a>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Liste des Tags</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tag in tags %}
+            <tr>
+                <td>
+                    <a href="{{ path('questions_tag', {'name': tag.name}) }}">
+                     {{ tag.name }}
+                    </a>
+                </td>
+                <td>
+                        <a href="{{ path('questions_tag', {'name': tag.name}) }}">
+                                <i class="fa fa-plus-circle"></i> Modifier
+                        </a>
+                </td>
+                <td>
+                        <a href="{{ path('backend_tag_delete', {'id': tag.id}) }}">
+                         SUpprimer
+                        </a>
+                </td>
+              
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Vous n'avez répondu à aucune question</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

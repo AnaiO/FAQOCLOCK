@@ -36,12 +36,16 @@
                                 <li class="nav-item">
                                   <a class="nav-link" href="{{ path('logout')}}">Déconnexion</a>
                                 </li>
+
                             {% endif %}
                           </ul>
-                          <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                          </form>
+                           {% if is_granted('ROLE_MODERATOR') %}
+                           <ul>
+                           <li class="nav-item">
+                              <a class="nav-link" href="{{ path('backend_tag_list')}}">Tags</a>
+                            </li>
+                          </ul>
+                           {% endif %}
                         </div>
                       </nav>
         </header>

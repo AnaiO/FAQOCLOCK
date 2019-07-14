@@ -13,6 +13,7 @@
 |`/Backend/question/[id]/toggle`|question_toggle|Bloquer /débloquer une question|POST|Backend\QuestionController|toggle||
 |`/Backend/question/[id]/answer/[id]/toggle`|answer_toggle|Bloquer/débloquer une réponse à une question|POST|Backend\AnswerController|toggle||
 |`/Backend/users`|user_role|Permet à un admin de changer les droits d'un utilisateur|POST|AdminController|role||
-|`/Backend/tags/create`|tag_create|Créer un tag|POST|TagController|form|Méthode commune creation update|
-|`/Backend/tags/edit`|tag_edit|Modifier un tag|POST|TagController|form||
-|`/admin/tags/delete`|tag_delete|Supprimer un tag|POST|TagController|delete||
+|`/Backend/tag/list`|tags_list|liste des tags|GET|Backend\TagController|list||
+|`/Backend/tag/create`|tag_create|Créer un tag|POST|TagController|form|Méthode commune creation update|
+|`/Backend/tag/edit`|tag_edit|Modifier un tag|POST|TagController|form||
+|`/admin/tag/delete`|tag_delete|Supprimer un tag|POST|TagController|delete||

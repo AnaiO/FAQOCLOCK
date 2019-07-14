@@ -111,6 +111,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "fortawesome/font-awesome": {
+        "version": "5.9.0"
+    },
     "fzaninotto/faker": {
         "version": "v1.8.0"
     },
