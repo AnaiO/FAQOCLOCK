@@ -10,7 +10,7 @@
                 
             {% for tag in tags %}
                 <div class="container pt-2">
-                    <button type="button" class="btn btn-outline-warning">{{ tag.name }}</button>
+                    <a href="{{ path("questions_tag", {"name": tag.name }) }}"><button type="button" class="btn btn-outline-warning">{{ tag.name }}</button></a>
                 </div>
             {% endfor %}
         </div>

@@ -2,9 +2,8 @@
 |--|--|--|--|--|--|--|
 | `/` | question_list | Liste des questions | GET | QuestionController | list | Page d'accueil avec les questions récentes |
 | `/question/[id]` | question_show | La question avec ses réponses | GET | QuestionController | show | question et ses réponses selon son id |
-| `/question/[tag]` | questions_tag | liste des questions selon un tag | GET | QuestionController | listByTag ||
+| `/question/tag/{name}` | questions_tag | liste des questions selon un tag | GET | QuestionController | listByTag ||
 |`/question/ask`|question_ask|Formulaire création de question|POST|QuestionController|form|Même méthode pour création et edit de la question|
-|`/question/tag`|question_tag|Questions filtrées par le tag|GET|QuestionController|questionsByTag||
 |`/question/[id]/edit`|question_edit|Formulaire pour edit une question|POST|QuestionController|form||
 |`/question/[id]/delete`|question_delete|Supprimer une question|POST|QuestionController|delete||
 |`/question/[id]/answer/submit`|answer_submit|Répondre à une question|POST|AnswerController|form||

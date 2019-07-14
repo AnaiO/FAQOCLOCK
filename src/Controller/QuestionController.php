@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Tag;
 use App\Entity\Question;
 use App\Repository\TagRepository;
+use App\Repository\AnswerRepository;
 use App\Repository\QuestionRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Repository\AnswerRepository;
 
 class QuestionController extends AbstractController
 {
@@ -26,7 +27,7 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/question/{id}", name="question_show", methods={"GET"})
+     * @Route("/question/{id}", name="question_show", methods={"GET"}, requirements={"page"="\d+"})
      */
     public function show(Question $question, AnswerRepository $answerRepository)
     {
@@ -40,4 +41,40 @@ class QuestionController extends AbstractController
             'answers' => $answers
         ]);
     }
+
+    /**
+     * @Route("/question/tag/{name}", name="questions_tag", methods={"GET"})
+     */
+    public function listByTag(Tag $tag)
+    {
+       return $this->render("question/tag.html.twig", [
+           'tag' => $tag
+       ]);
+    }
+
+     /**
+      * @Route("/question/ask", name="question_ask", methods={"POST"})
+      * @Route("/question/{id}/edit", name="question_edit", methods={"POST"})
+      */
+    public function form()
+      {
+          //formulaire de création et édition d'une question
+      }
+
+      /**
+       * @Route("/question/{id}/delete", name="question_delete", methods={"POST"})
+       */
+    public function delete(Question $question, EntityManager $em)
+      {
+        if (!$question) {
+            throw $this->createNotFoundException(
+                'Oops, la question n\'existe pas'
+            );
+        }
+
+          $em->remove($question);
+          $em->flush();
+
+          return $this->redirectToRoute('question_list');
+      }
 }

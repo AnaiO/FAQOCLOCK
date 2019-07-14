@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/signup"), name="sign_up", methods={"GET", "POST"}
+     * @Route("/signup", name="signup")
      */
     public function signUp(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -22,9 +22,6 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            
-
             $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encodedPassword);
 
