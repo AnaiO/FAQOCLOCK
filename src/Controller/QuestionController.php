@@ -57,8 +57,8 @@ class QuestionController extends AbstractController
     }
 
      /**
-      * @Route("/question/ask", name="question_ask", methods={"POST", "GET"})
-      * @Route("/question/{id}/edit", name="question_edit", requirements={"id"="\d+"})
+      * @Route("/user/question/ask", name="question_ask", methods={"POST", "GET"})
+      * @Route("/user/question/{id}/edit", name="question_edit", requirements={"id"="\d+"})
       */
     public function form(Question $question=null, ObjectManager $om, Request $request)
       { 
@@ -98,17 +98,17 @@ class QuestionController extends AbstractController
       /**
        * @Route("/question/{id}/delete", name="question_delete", methods={"POST"})
        */
-    public function delete(Question $question, EntityManager $em)
-      {
-        if (!$question) {
-            throw $this->createNotFoundException(
-                'Oops, la question n\'existe pas'
-            );
-        }
+    // public function delete(Question $question, EntityManager $em)
+    //   {
+    //     if (!$question) {
+    //         throw $this->createNotFoundException(
+    //             'Oops, la question n\'existe pas'
+    //         );
+    //     }
 
-          $em->remove($question);
-          $em->flush();
+    //       $em->remove($question);
+    //       $em->flush();
 
-          return $this->redirectToRoute('question_list');
-      }
+    //       return $this->redirectToRoute('question_list');
+    //   }
 }
