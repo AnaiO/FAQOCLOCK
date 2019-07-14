@@ -27,6 +27,8 @@ security:
                 username_parameter: _email
                 login_path: login
                 check_path: login
+            logout:
+                path:   logout
                 
             guard:
                 authenticators:
