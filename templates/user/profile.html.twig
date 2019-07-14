@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    {# {% for info in app.user %}
+        {{ info }}
+    {% endfor %} #}
+<a href="{{ path("profile_edit")}}"><button>Editer le profil</button></a>
+    {{ app.user.email }}
+    {{ app.user.firstname }} - {{ app.user.lastname }}
+    {{ app.user.password }}
+    <img src="{{ app.user.image }}" alt="">
+{% endblock %}
