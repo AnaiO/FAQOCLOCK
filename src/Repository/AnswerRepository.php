@@ -23,27 +23,34 @@ class AnswerRepository extends ServiceEntityRepository
      * @return Answer[] Returns an array of Answer objects
      *
     */
-    public function findByMovie($question)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.movie = :val')
-            ->setParameter('val', $question)
-            ->orderBy('a.id', 'DESC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    // public function findByQuestion($question)
+    // {
+    //     return $this->createQueryBuilder('a')
+    //         ->andWhere('a.question = :val')
+    //         ->setParameter('val', $question)
+    //         ->orderBy('a.id DESC, a.status DESC')
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
     
 
-    /*
-    public function findOneBySomeField($value): ?Answer
+    
+    /**
+     * 
+     * @param Question $question
+     * @return Answer[]
+     */
+    public function findByQuestion($question)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = $this->getEntityManager()->createQuery('
+            SELECT a 
+            FROM App\Entity\Answer a
+            WHERE a.question = :question
+            ORDER BY a.status DESC, a.id DESC 
+        ')
+        ->setParameter('question', $question);
+        return $query->getResult(); 
     }
-    */
+    
 }
