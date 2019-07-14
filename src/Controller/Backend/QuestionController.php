@@ -10,16 +10,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class QuestionController extends AbstractController
 {
     /**
-     * @Route("/Backend/question/{id}/toggle", name="backend_question")
+     * @Route("/Backend/question/{id}/toggle", name="backend_question_toggle")
      */
     public function toggle(Question $question, ObjectManager $om)
     {
         if (!$question){
             return $this->createNotFoundException("La question n'existe pas");
         }
-        $question->setStatus(0);
+        $question->setStatus('0');
 
-        $om->persist($question);
+        
         $om->flush();
 
         $this->addFlash(
@@ -27,8 +27,6 @@ class QuestionController extends AbstractController
             'Vos modifications ont été prises en compte'
         );
         
-        return $this->render('backend/question/index.html.twig', [
-            'controller_name' => 'QuestionController',
-        ]);
+        return $this->redirectToRoute('question_list');
     }
 }

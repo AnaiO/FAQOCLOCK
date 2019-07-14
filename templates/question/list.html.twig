@@ -19,7 +19,8 @@
 {% block body %}
     <div>
         {% for question in questions %}
-            <a href="{{ path('question_show', {'id': question.id }) }}">
+        {% if question.status %}
+           
                 <div class=" text-white bg-dark mb-3" style="margin: 1rem auto; max-width: 80%;">
                     <div class="d-flex justify-content-center">
                         {% for tag in question.tags %}
@@ -27,16 +28,18 @@
                         {% endfor %}
                     </div>
                     <div class="card-header  d-flex justify-content-between">
-                        <h4 class="card-title">{{ question.title }}</h4>
+                        <a href="{{ path('question_show', {'id': question.id }) }}"> <h4 class="card-title">{{ question.title }}</h4> </a>
                         <span>{{ question.updatedAt|date("d/m/Y H:i", "Europe/Paris") }}</span>
                     </div>
                     
                     <div class="card-body">
                         <p class="card-text">{{ question.user.firstname }} {{ question.user.lastname }}</p>
                         <p class="card-text">{{ question.content }}</p>
+                        <div><a href="{{ path('backend_question_toggle', {'id': question.id}) }}">Bloquer/Débloquer</a></div>
                     </div>
                 </div>
-            </a>
+                
+        {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

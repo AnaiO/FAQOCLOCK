@@ -25,7 +25,7 @@ class TagController extends AbstractController
 
     /**
      * @Route("/backend/tag/new", name="backend_tag_new", methods={"GET", "POST"})
-     * @Route("/backend/tag/edit", name="backend_tag_edit", methods={"GET", "POST"})
+     * @Route("/backend/tag/{id}/edit", name="backend_tag_edit", methods={"GET", "POST"})
      */
     public function form(Tag $tag=null, Request $request, ObjectManager $om)
     {
