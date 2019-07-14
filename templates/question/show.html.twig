@@ -44,6 +44,9 @@
                      <div class="card-header d-flex justify-content-between">
                             <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> 
                             <div>
+
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.id is same as(question.user.id) %}
+
                                 {% if answer.status is not same as(2) %}
                                 <a href="{{ path('answer_validate', {"id": answer.id })}}">
                                 <button>Valider la réponse</button>
@@ -52,6 +55,8 @@
                                 <a href="{{ path('answer_novalidate', {"id": answer.id })}}">
                                 <button>Annuler</button>
                                 </a>
+                                {% endif %}
+
                                 {% endif %}
 
                                 
