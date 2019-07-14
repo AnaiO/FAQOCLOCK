@@ -17,12 +17,18 @@ class AnswerController extends AbstractController
     */
     public function validate(Answer $answer, ObjectManager $om)
     {
+
         if (!$answer){
             $this->createNotFoundException("La réponse n'existe pas");
         }
+        $question = $answer->getQuestion();
+        $questionId = $question->getId();
         $answer->setStatus('2');
 
         $om->flush();
+
+        return $this->redirectToRoute('question_show', ['id' => $questionId
+        ]);
     }
 
     

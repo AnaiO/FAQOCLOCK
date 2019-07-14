@@ -38,9 +38,10 @@
         {% for answer in answers %}
         {% if answer.status %}
             <div class="container">
-                <div class="card">
+                <div class="card {% if answer.status == 2 %}valid{% endif %}">
                      <div class="card-header d-flex justify-content-between">
-                            <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> <div><button>Valider la réponse</button></div> 
+                            <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> 
+                            <div><a href="{{ path('answer_validate', {"id": answer.id })}}"><button>Valider la réponse</button></a></div> 
                     </div>
                      <div class="card-body">
                          <blockquote class="blockquote mb-0">
