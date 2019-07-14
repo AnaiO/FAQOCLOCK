@@ -39,7 +39,7 @@ class AnswerController extends AbstractController
 
                 return $this->redirectToRoute('question_show', ["id" => $question->getId()]);
         }else{
-                return $this->render('answer/form.html.twig', [
+                return $this->render('answer/_form.html.twig', [
                 'form' => $form->createView()
             ]);
         }    

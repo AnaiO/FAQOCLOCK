@@ -7,11 +7,11 @@
 |`/user/question/{id}/answer`|answer_submit|Répondre à une question|POST|AnswerController|answer||
 |`/signup`|sign_up|formulaire d'inscription|GET/POST|UserController|signUp||
 `/login`|log_in|Formulaire de connexion|GET/POST|UserController|login||
-`/profile`|profile_show|Informations du compte et liste questions et réponses de l'utilisateur|GET|UserController|show||
-`/profile/edit`|profile_edit|Modifiction des informations perso du compte utilisateur|POST|UserController|edit||
-|`/admin/question/[id]/SwitchStatus`|question_switchStatus|Bloquer /débloquer une question|POST|AdminController|switchStatus||
-|`/admin/question/[id]/answer/[id]/status`|answer_switchStatus|Bloquer/débloquer une réponse à une question|POST|AdminController|switchStatus||
-|`/admin/users`|user_role|Permet à un admin de changer les droits d'un utilisateur|POST|AdminController|role||
-|`/admin/tags/create`|tag_create|Créer un tag|POST|TagController|form|Méthode commune creation update|
-|`/admin/tags/edit`|tag_edit|Modifier un tag|POST|TagController|form||
+`user/profile`|profile_show|Informations du compte et liste questions et réponses de l'utilisateur|GET|UserController|show||
+`user/profile/edit`|profile_edit|Modifiction des informations perso du compte utilisateur|POST|UserController|edit||
+|`/Backend/question/[id]/toggle`|question_toggle|Bloquer /débloquer une question|POST|Backend\QuestionController|toggle||
+|`/Backend/question/[id]/answer/[id]/toggle`|answer_toggle|Bloquer/débloquer une réponse à une question|POST|Backend\AnswerController|toggle||
+|`/Backend/users`|user_role|Permet à un admin de changer les droits d'un utilisateur|POST|AdminController|role||
+|`/Backend/tags/create`|tag_create|Créer un tag|POST|TagController|form|Méthode commune creation update|
+|`/Backend/tags/edit`|tag_edit|Modifier un tag|POST|TagController|form||
 |`/admin/tags/delete`|tag_delete|Supprimer un tag|POST|TagController|delete||

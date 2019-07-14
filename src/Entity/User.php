@@ -227,7 +227,7 @@ class User implements UserInterface
     {
         if (!$this->questions->contains($question)) {
             $this->questions[] = $question;
-            $question->setAuthor($this);
+            $question->setUser($this);
         }
 
         return $this;
@@ -238,8 +238,8 @@ class User implements UserInterface
         if ($this->questions->contains($question)) {
             $this->questions->removeElement($question);
             // set the owning side to null (unless already changed)
-            if ($question->getAuthor() === $this) {
-                $question->setAuthor(null);
+            if ($question->getUser() === $this) {
+                $question->setUser(null);
             }
         }
 
