@@ -32,4 +32,10 @@ a:hover{
 
 .button--toggle{
     background-color: red;
+    font-weight: bolder;
+    
+}
+
+td a{
+    color: black;
 }

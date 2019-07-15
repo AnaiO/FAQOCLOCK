@@ -17,8 +17,12 @@ class QuestionController extends AbstractController
         if (!$question){
             return $this->createNotFoundException("La question n'existe pas");
         }
-        $question->setStatus('0');
 
+        if ($question->getStatus() == '1'){
+            $question->setStatus('0');
+        }else{
+            $question->setStatus('1');
+        }
         
         $om->flush();
 

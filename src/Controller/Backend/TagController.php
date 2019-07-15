@@ -18,6 +18,7 @@ class TagController extends AbstractController
     public function list(TagRepository $tagRepository)
     {
         $tags = $tagRepository->findAll();
+        
         return $this->render('backend/tag/list.html.twig', [
             'tags' => $tags
         ]);
