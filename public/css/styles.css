@@ -1,6 +1,6 @@
 .card{
     border-radius: 30px;
-    background-color: gold;
+    background-color: lightgrey;
     margin: 1rem;
 }
 
@@ -28,11 +28,13 @@ a:hover{
 
 .moderator{
     background-color: red;
+    color: white;
 }
 
 .button--toggle{
     background-color: red;
     font-weight: bolder;
+    margin: 0.2rem;
     
 }
 

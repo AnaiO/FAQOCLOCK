@@ -10,8 +10,8 @@
 `/login`|log_in|Formulaire de connexion|GET/POST|UserController|login||
 `user/profile`|profile_show|Informations du compte et liste questions et réponses de l'utilisateur|GET|UserController|show||
 `user/profile/edit`|profile_edit|Modifiction des informations perso du compte utilisateur|POST|UserController|edit||
-|`/Backend/question/[id]/toggle`|question_toggle|Bloquer /débloquer une question|POST|Backend\QuestionController|toggle||
-|`/Backend/question/[id]/answer/[id]/toggle`|answer_toggle|Bloquer/débloquer une réponse à une question|POST|Backend\AnswerController|toggle||
+|`/Backend/question/[id]/toggle`|backend_question_toggle|Bloquer /débloquer une question|POST|Backend\QuestionController|toggle||
+|`/Backend/question/answer/[id]/toggle`|backend_answer_toggle|Bloquer/débloquer une réponse à une question|POST|Backend\AnswerController|toggle||
 |`/Backend/users`|user_role|Permet à un admin de changer les droits d'un utilisateur|POST|AdminController|role||
 |`/Backend/tag/list`|tags_list|liste des tags|GET|Backend\TagController|list||
 |`/Backend/tag/create`|tag_create|Créer un tag|POST|TagController|form|Méthode commune creation update|

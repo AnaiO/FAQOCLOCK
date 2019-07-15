@@ -53,12 +53,14 @@
                     </div>
                 </div>
                 {% endif %}
+
+        {####### moderator can see blocked questions ########}
         {% if question.status == "0" and is_granted('ROLE_MODERATOR') %}
 
                         <div class=" text-white  mb-3 moderator" style="margin: 1rem auto; max-width: 80%;">
                             <div class="d-flex justify-content-center">
 
-                                {# tags above questions in questions list #}
+                                {########### tags above questions in questions list #######}
                                 {% for tag in question.tags %}
                                     <button type="button" class="btn btn-danger question--tags">{{ tag.name }}</button>
                                 {% endfor %}

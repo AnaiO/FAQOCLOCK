@@ -11,7 +11,7 @@
             {% for tag in question.tags %}
                 <div class="container pt-2">
                     <a href="{{ path('questions_tag', {"name": tag.name }) }}">
-                        <button type="button" class="btn btn-outline-warning">{{ tag.name }}</button>
+                        <button type="button" class="btn btn-light">{{ tag.name }}</button>
                     </a>
                 </div>
             {% endfor %}
@@ -31,51 +31,83 @@
                     </div>
         </div>
 
+        {#### answer form for users ####}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div>
             {% include 'answer/_form.html.twig' %}
         </div>
         {% endif %}
+        {##### endform ####}
         
+        {##### answers list #####}
         {% for answer in answers %}
         {% if answer.status %}
-            <div class="container">
-                <div class="card {% if answer.status == 2 %}
+                 <div class="container">
+                    <div class="card {% if answer.status == 2 %}
                                         valid
-                                        {% endif %}">
-                     <div class="card-header d-flex justify-content-between">
-                        <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> 
-                            <div>
+                                      {% endif %}">
 
-                                {% if is_granted('IS_AUTHENTICATED_FULLY') 
-                                and app.user.id is same as(question.user.id) %}
+                         <div class="card-header d-flex justify-content-between">
+                            <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> 
+                                <div class="d-flex">
 
-                                {% if answer.status is not same as(2) %}
-                                <a href="{{ path('answer_validate', {"id": answer.id })}}">
-                                <button>Valider la réponse</button>
-                                </a>
-                                {% else %}
-                                <a href="{{ path('answer_novalidate', {"id": answer.id })}}">
-                                <button>Annuler</button>
-                                </a>
-                                {% endif %}
-
-                                {% endif %}
-
+                                {##### Block an answer if moderator ######}
+                                    {% if is_granted('ROLE_MODERATOR') %}
+                                     <div class="d-flex justify-content-end">
+                                        <a href="{{ path('backend_answer_toggle', {'id': answer.id}) }}">
+                                            <button type="button" class="btn btn-danger button--toggle">Bloquer</button>
+                                        </a>
+                                    </div>
+                                    {% endif %}
                                 
-                            </div> 
-                         </div>
-                     <div class="card-body">
-                         <blockquote class="blockquote mb-0">
-                            <p>{{ answer.content }}</p>
+                                    {##### if author of the question, valid/invalid an answer #####}
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') 
+                                    and app.user.id is same as(question.user.id) %}
+
+                                    {% if answer.status is not same as(2) %}
+                                        <a href="{{ path('answer_validate', {"id": answer.id })}}">
+                                        <button class="btn btn-danger button--toggle">Valider la réponse</button>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('answer_novalidate', {"id": answer.id })}}">
+                                        <button class="btn btn-danger button--toggle">Annuler</button>
+                                        </a>
+                                    {% endif %}
+                                    {% endif %}
+                                </div> 
+                             </div>
+                         <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{ answer.content }}</p>
+                                <footer class="blockquote-footer d-flex justify-content-end">
+                                    {{ answer.updatedAt|date("d/m/Y H:i", "Europe/Paris")}}
+                                </footer>
+                             </blockquote>
+                        </div>
+                    </div>    
+                </div>
+                {% endif %}
+
+                {##### moderators can see blocked answers #####}
+                {% if answer.status == "0" and is_granted('ROLE_MODERATOR') %}
+                <div class="container">
+                    <div class="card moderator">
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0 d-flex justify-content-between">
+                                <div><p>{{ answer.content }}</p></div>
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ path('backend_answer_toggle', {'id': answer.id}) }}">
+                                        <button type="button" class="btn btn-danger button--toggle">Débloquer</button>
+                                    </a>
+                                </div>
+                            </blockquote>
                             <footer class="blockquote-footer d-flex justify-content-end">
                                 {{ answer.updatedAt|date("d/m/Y H:i", "Europe/Paris")}}
                             </footer>
-                         </blockquote>
-                     </div>
-                </div>    
-            </div>
-        {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}    
         {% endfor %}
     </div>
 
