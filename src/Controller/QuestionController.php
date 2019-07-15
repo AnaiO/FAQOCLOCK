@@ -127,17 +127,17 @@ class QuestionController extends AbstractController
       /**
        * @Route("/question/{id}/delete", name="question_delete", methods={"POST"})
        */
-    // public function delete(Question $question, EntityManager $em)
-    //   {
-    //     if (!$question) {
-    //         throw $this->createNotFoundException(
-    //             'Oops, la question n\'existe pas'
-    //         );
-    //     }
+    public function delete(Question $question, EntityManager $em)
+      {
+        // if (!$question) {
+        //     throw $this->createNotFoundException(
+        //         'Oops, la question n\'existe pas'
+        //     );
+        // }
 
-    //       $em->remove($question);
-    //       $em->flush();
+        //   $em->remove($question);
+        //   $em->flush();
 
-    //       return $this->redirectToRoute('question_list');
-    //   }
+        //   return $this->redirectToRoute('question_list');
+      }
 }

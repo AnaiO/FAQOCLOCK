@@ -10,7 +10,9 @@
                 
             {% for tag in question.tags %}
                 <div class="container pt-2">
-                    <a href="{{ path('questions_tag', {"name": tag.name }) }}"><button type="button" class="btn btn-outline-warning">{{ tag.name }}</button></a>
+                    <a href="{{ path('questions_tag', {"name": tag.name }) }}">
+                        <button type="button" class="btn btn-outline-warning">{{ tag.name }}</button>
+                    </a>
                 </div>
             {% endfor %}
         </div>
@@ -42,10 +44,11 @@
                                         valid
                                         {% endif %}">
                      <div class="card-header d-flex justify-content-between">
-                            <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> 
+                        <div>{{ answer.user.firstname }} {{ answer.user.lastname }}</div> 
                             <div>
 
-                                {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user.id is same as(question.user.id) %}
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') 
+                                and app.user.id is same as(question.user.id) %}
 
                                 {% if answer.status is not same as(2) %}
                                 <a href="{{ path('answer_validate', {"id": answer.id })}}">
@@ -61,11 +64,13 @@
 
                                 
                             </div> 
-                    </div>
+                         </div>
                      <div class="card-body">
                          <blockquote class="blockquote mb-0">
-                         <p>{{ answer.content }}</p>
-                         <footer class="blockquote-footer d-flex justify-content-end">{{ answer.updatedAt|date("d/m/Y H:i", "Europe/Paris")}}</footer>
+                            <p>{{ answer.content }}</p>
+                            <footer class="blockquote-footer d-flex justify-content-end">
+                                {{ answer.updatedAt|date("d/m/Y H:i", "Europe/Paris")}}
+                            </footer>
                          </blockquote>
                      </div>
                 </div>    
