@@ -65,7 +65,7 @@ class AppFixtures extends Fixture
             'lastname' => function() use($generator) { return $generator->unique()->lastname(); },
             'email' => function() use($generator) { return $generator->unique()->email(); },
             'password' => function() use($generator) { return $generator->unique()->password(); },
-            'image' => function() use($generator) { return $generator->unique()->imageUrl(); },
+            'image' => function() use($generator) { return $generator->unique()->imageUrl($width = 400, $height = 200); },
         ]);
 
         $populator->addEntity(Question::class, 20, [

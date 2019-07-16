@@ -64,3 +64,11 @@ td a{
     border: none;
     background-color: white;
 }
+
+.profile--section{
+    margin-bottom: 10rem;
+}
+
+.profile--image{
+    width: 2px;
+}

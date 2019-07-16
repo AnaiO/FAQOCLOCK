@@ -44,11 +44,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -136,17 +131,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
