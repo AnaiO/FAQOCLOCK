@@ -15,7 +15,8 @@ class TagType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'constraints' => new NotBlank()
+                'constraints' => new NotBlank(),
+                'label' => 'Nom'
             ]);
             
         ;

@@ -38,8 +38,9 @@ class SignUpType extends AbstractType
                 ]);
             } else { //sinon je suis en mise a jour car l'id est present
                 $form->add('password', RepeatedType::class, [
-                    'empty_data' => '',
+                    
                     'type' => PasswordType::class,
+                    'empty_data' => ' ',
                     'invalid_message' => 'The password fields must match.',
                     'options' => ['attr' => ['class' => 'password-field']],
                     'required' => true,
