@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Users{% endblock %}
+
+{% block body %}
+
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Liste des Utilisateurs</th>
+                <th>Droits</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>
+                   
+                     {{ user.firstname }} {{ user.lastname }}
+                    
+                </td>
+                <td>
+                        
+                    {{ user.role.name }}
+            
+                </td>  
+                <td>
+                        
+                                <i class="fa fa-plus-circle"></i> Modifier
+                        
+                </td>  
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun utilisateur en base de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
