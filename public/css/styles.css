@@ -32,7 +32,7 @@ a:hover{
 }
 
 .button--toggle{
-    background-color: red;
+    background-color: #17a2b8;
     font-weight: bolder;
     margin: 0.2rem;
     
@@ -45,11 +45,11 @@ td a{
 .form--answer{
     width: 50%;
     margin-left: 40%;
-    border: 20px solid lightgray;
-    background-color: lightgray;
+    border: 20px solid #17a2b8;
+    background-color: #17a2b8;
     border-radius: 5px;
     height: 15rem;
-    box-shadow: 12px 12px 40px 1px rgba(32, 164, 182, 0.226);
+    box-shadow: 8px 8px 20px 1px rgba(0, 0, 0, 0.226);
 }
 
 #answer_content{
@@ -58,4 +58,9 @@ td a{
 
 .question--list{
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.158);
+}
+
+.form--button{
+    border: none;
+    background-color: white;
 }
