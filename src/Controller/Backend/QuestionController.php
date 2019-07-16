@@ -27,7 +27,7 @@ class QuestionController extends AbstractController
         $om->flush();
 
         $this->addFlash(
-            'notice',
+            'success',
             'Vos modifications ont été prises en compte'
         );
         

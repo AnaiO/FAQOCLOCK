@@ -7,10 +7,12 @@ use App\Entity\Question;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class QuestionType extends AbstractType
 {
@@ -18,10 +20,28 @@ class QuestionType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'constraints' => new NotBlank()
+                'empty_data' => '',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min'        => 3,
+                        'minMessage' => 'Titre trop court (min attendu : {{ limit }})' ,
+                        'max'        => 255,
+                        'maxMessage' => 'Titre trop long (max attendu : {{ limit }})' ,
+                        ])
+                ],
+                'label' => 'Titre',
             ])
-            ->add('content', TextType::class, [
-                'constraints' => new NotBlank()
+            ->add('content', TextareaType::class, [
+                'empty_data' => '',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min'        => 30,
+                        'minMessage' => 'Contenu trop court (min attendu : {{ limit }})' ,
+                        ])
+                ],
+                'label' => 'Contenu',
             ])
             ->add('tags', EntityType::class, [
                 'class' => Tag::class,
