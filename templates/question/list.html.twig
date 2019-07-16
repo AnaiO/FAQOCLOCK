@@ -25,12 +25,12 @@
             
             {% if question.status %}
            
-                <div class=" text-white bg-dark mb-3" style="margin: 1rem auto; max-width: 80%;">
+                <div class=" text-white bg-secondary mb-3 question--list" style="margin: 1rem auto; max-width: 80%;">
                     <div class="d-flex justify-content-center">
 
                         {######## tags above questions in questions list #########}
                         {% for tag in question.tags %}
-                            <button type="button" class="btn btn-secondary question--tags">{{ tag.name }}</button>
+                            <button type="button" class="btn btn-info question--tags">{{ tag.name }}</button>
                         {% endfor %}
 
                     </div>

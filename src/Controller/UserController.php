@@ -57,10 +57,4 @@ class UserController extends AbstractController
     }
 
     
-
-
-
-   //edit profile /user/profile/edit   edit profile_edit
-
-   //evnetuelement logout plus tard
 }

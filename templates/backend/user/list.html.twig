@@ -13,22 +13,21 @@
             </tr>
         </thead>
         <tbody>
+
+
         {% for user in users %}
             <tr>
                 <td>
-                   
                      {{ user.firstname }} {{ user.lastname }}
-                    
                 </td>
                 <td>
-                        
                     {{ user.role.name }}
             
                 </td>  
                 <td>
-                        <a href="{{ path('backend_users_role', {"id" : user.id }) }}">
-                                <i class="fa fa-plus-circle"></i> Modifier</a>
-                        
+                    <a href="{{ path('backend_users_role', {"id" : user.id }) }}">
+                                <i class="fa fa-plus-circle"></i> Modifier
+                    </a>
                 </td>  
             </tr>
         {% else %}
@@ -37,6 +36,6 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+</table>
 
 {% endblock %}

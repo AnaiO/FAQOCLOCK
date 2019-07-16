@@ -22,16 +22,15 @@
                     </a>
                 </td>
                 <td>
-                        <a href="{{ path('backend_tag_edit', {'id': tag.id}) }}">
+                    <a href="{{ path('backend_tag_edit', {'id': tag.id}) }}">
                                 <i class="fa fa-plus-circle"></i> Modifier
-                        </a>
+                    </a>
                 </td>
                 <td>
-                        <a href="{{ path('backend_tag_delete', {'id': tag.id}) }}">
+                    <a href="{{ path('backend_tag_delete', {'id': tag.id}) }}">
                          SUpprimer
-                        </a>
+                    </a>
                 </td>
-              
             </tr>
         {% else %}
             <tr>
@@ -39,6 +38,6 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+</table>
 
 {% endblock %}

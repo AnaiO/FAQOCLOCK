@@ -5,18 +5,28 @@ namespace App\Form;
 use App\Entity\Answer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AnswerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', TextType::class, [
-                'constraints' => new NotBlank()
+            ->add('content', TextareaType::class, [
+                'empty_data' => '',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min'        => 30,
+                        'minMessage' => 'Réponse trop courte (min attendu : {{ limit }})' ,
+                        ])
+                ],
+                'label' => false,
             ])
+            
 
         ;
     }
