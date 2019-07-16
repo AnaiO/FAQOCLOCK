@@ -19,6 +19,30 @@ class RoleRepository extends ServiceEntityRepository
         parent::__construct($registry, Role::class);
     }
 
+     
+    // public function findByQuestion($question)
+    // {
+    //     $query = $this->getEntityManager()->createQuery('
+    //         SELECT a 
+    //         FROM App\Entity\Answer a
+    //         WHERE a.question = :question
+    //         ORDER BY a.status DESC, a.id DESC 
+    //     ')
+    //     ->setParameter('question', $question);
+    //     return $query->getResult(); 
+    // }
+
+    public function findByNameRole($name)
+    {
+        $query = $this->getEntityManager()->createQuery('
+        SELECT  r
+        FROM App\Entity\Role r
+        WHERE r.name = :name
+        ')
+        ->setParameter('name', $name);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Role[] Returns an array of Role objects
     //  */
