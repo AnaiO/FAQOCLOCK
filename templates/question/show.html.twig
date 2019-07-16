@@ -69,7 +69,7 @@
                                         <button class="btn btn-danger button--toggle">Valider la réponse</button>
                                         </a>
                                     {% else %}
-                                        <a href="{{ path('answer_novalidate', {"id": answer.id })}}">
+                                        <a href="{{ path('answer_validate', {"id": answer.id })}}">
                                         <button class="btn btn-danger button--toggle">Annuler</button>
                                         </a>
                                     {% endif %}

@@ -3,7 +3,7 @@
 | `/` | question_list | Liste des questions | GET | QuestionController | list | Page d'accueil avec les questions récentes |
 | `/question/[id]` | question_show | La question avec ses réponses | GET | QuestionController | show | question et ses réponses selon son id |
 | `/question/tag/{name}` | questions_tag | liste des questions selon un tag | GET | QuestionController | listByTag ||
-|`/user/question/ask`|question_ask|Formulaire création de question|POST|QuestionController|form|Même méthode pour création et edit de la question|
+|`/user/question/ask`|question_ask|Formulaire création de question|POST|QuestionController|form||
 |`/user/question/{id}/answer`|answer_submit|Répondre à une question|POST|AnswerController|answer||
 |`/user/question/answer/{id}/validate`|answer_validate|Valider la bonne réponse à une question|POST|AnswerController|validate||
 |`/signup`|sign_up|formulaire d'inscription|GET/POST|UserController|signUp||

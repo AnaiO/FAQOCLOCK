@@ -21,30 +21,19 @@ class AnswerController extends AbstractController
         if (!$answer){
             $this->createNotFoundException("La réponse n'existe pas");
         }
+
         $question = $answer->getQuestion();
         $questionId = $question->getId();
-        $answer->setStatus('2');
 
-        $om->flush();
-
-        return $this->redirectToRoute('question_show', ['id' => $questionId
-        ]);
-    }
-
-    /**
-    * @Route("/user/question/answer/{id}/novalidate", name="answer_novalidate", methods={"GET", "POST"})
-    */
-    public function noValidate(Answer $answer, ObjectManager $om)
-    {
-
-        if (!$answer){
-            $this->createNotFoundException("La réponse n'existe pas");
+        if ($answer->getStatus() == '1'){
+            $answer->setStatus('2');
+        }else{
+            $answer->setStatus('1');
         }
-        $question = $answer->getQuestion();
-        $questionId = $question->getId();
-        $answer->setStatus('1');
-
+        
         $om->flush();
+
+        $this->addFlash('Danger', 'La réponse a bien été validée');
 
         return $this->redirectToRoute('question_show', ['id' => $questionId
         ]);

@@ -34,14 +34,17 @@ class UserController extends AbstractController
             return $this->createNotFoundException('L\'utilisateur est inconnu');
         }
 
-        $userCurrentRole = $user->getRole();
-        $userCurrentRole->removeUser($user);
-
-        $role = $roleRepository->findByNameRole('Moderator');
-
         
+        $userCurrentRole = $user->getRole();
+        
+        $role = $roleRepository->findByNameRole('Moderator');
+        $role = $role[0];
         $role->addUser($user);
-dd($user);
+
+        $om->flush();
+
+        $this->addFlash('success', 'Vos modifications ont été sauvegardées.');
+        
         
 
         return $this->redirectToRoute('backend_users_list');
