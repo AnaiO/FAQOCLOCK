@@ -31,25 +31,25 @@
                             {% else %}
 
                                 <li class="nav-item">
-                                  <a class="nav-link" href="{{ path('profile_show') }}">Profil</a>
+                                  <a class="nav-link" href="{{ path('profile_show') }}"><button class="btn btn-light">Profil </button></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="{{ path('question_ask')}}">Poser une question</a>
+                                  <a class="nav-link" href="{{ path('question_ask')}}"><button class="btn btn-light">Poser une question </button></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="{{ path('logout')}}">Déconnexion</a>
+                                  <a class="nav-link" href="{{ path('logout')}}"><button class="btn btn-light">Déconnexion </button></a>
                                 </li>
 
                             {% endif %}
 
                           </ul>
                            {% if is_granted('ROLE_MODERATOR') %}
-                           <ul>
+                           <ul class="d-flex">
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ path('backend_tag_list')}}">Tags</a>
+                              <a class="nav-link" href="{{ path('backend_tag_list')}}"><button class="btn btn-light"> Tags</button></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('backend_users_list')}}">Utilisateurs</a>
+                                <a class="nav-link" href="{{ path('backend_users_list')}}"><button class="btn btn-light">Utilisateurs </button></a>
                               </li>
                           </ul>
                            {% endif %}

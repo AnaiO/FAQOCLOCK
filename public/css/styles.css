@@ -10,6 +10,9 @@
     margin: 0.5rem;
     padding: 0;
 }
+li{
+    list-style-type: none;
+}
 
 
 a{
@@ -27,7 +30,7 @@ a:hover{
 }
 
 .moderator{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.61);
     color: white;
 }
 

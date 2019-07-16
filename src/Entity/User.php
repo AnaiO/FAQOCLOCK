@@ -75,6 +75,7 @@ class User implements UserInterface
         $this->createdAt = new \DateTime;
         $this->updatedAt = new \DateTime;
         $this->status = 1;
+        $this->role = 3;
     
     }
 

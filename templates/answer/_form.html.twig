@@ -10,7 +10,7 @@
         <div class="col">
             {{ form_row(form.content, {'attr' : {'placeholder': 'Ecrire une réponse'}} ) }}
         </div> 
-       <button class="d-flex justify-content-end form--button" type="submit"> Envoyer </button> 
+      <a href="{{ path('question_show', {'id': question.id })}}"> <button class="d-flex justify-content-end form--button" type="submit"> Envoyer </button></a> 
     </div>
    
     {{ form_end(form) }}

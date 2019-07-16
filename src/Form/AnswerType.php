@@ -16,11 +16,11 @@ class AnswerType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'empty_data' => '',
+                
                 'constraints' => [
                     new NotBlank(),
                     new Length([
-                        'min'        => 30,
+                        'min'        => 3,
                         'minMessage' => 'Réponse trop courte (min attendu : {{ limit }})' ,
                         ])
                 ],

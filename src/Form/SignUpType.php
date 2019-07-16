@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -37,6 +38,7 @@ class SignUpType extends AbstractType
                 ]);
             } else { //sinon je suis en mise a jour car l'id est present
                 $form->add('password', RepeatedType::class, [
+                    'empty_data' => '',
                     'type' => PasswordType::class,
                     'invalid_message' => 'The password fields must match.',
                     'options' => ['attr' => ['class' => 'password-field']],
@@ -51,16 +53,47 @@ class SignUpType extends AbstractType
                 ]);
             }
         };
+
         
         $builder
             ->add('firstname', TextType::class, [
-                'constraints' => new NotBlank()
+                'empty_data' => '',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min'        => 3,
+                        'minMessage' => 'Prénom trop court (min attendu : {{ limit }})' ,
+                        'max'        => 255,
+                        'maxMessage' => 'Prénom trop long (max attendu : {{ limit }})' ,
+                        ])
+                ],
+                'label' => 'Prénom',
             ])
             ->add('lastname', TextType::class, [
-                'constraints' => new NotBlank()
+                'empty_data' => '',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min'        => 3,
+                        'minMessage' => 'Nom trop court (min attendu : {{ limit }})' ,
+                        'max'        => 255,
+                        'maxMessage' => 'Nom trop long (max attendu : {{ limit }})' ,
+                        ])
+                ],
+                'label' => 'Nom',
             ])
             ->add('email', EmailType::class, [
-                'constraints' => new NotBlank
+                'empty_data' => '',
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min'        => 3,
+                        'minMessage' => 'Email trop court (min attendu : {{ limit }})' ,
+                        'max'        => 255,
+                        'maxMessage' => 'Email trop long (max attendu : {{ limit }})' ,
+                        ])
+                ],
+                'label' => 'Email',
             ])
             ->addEventListener(FormEvents::PRE_SET_DATA, $listener)
 

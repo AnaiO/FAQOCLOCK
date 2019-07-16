@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\SignUpType;
+use App\Repository\RoleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,7 +39,7 @@ class SecurityController extends AbstractController
      /**
      * @Route("/signup", name="signup")
      */
-    public function signUp(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function signUp(Request $request, UserPasswordEncoderInterface $passwordEncoder, RoleRepository $roleRepository)
     {
         $user = new User;
         $form = $this->createForm(SignUpType::class, $user);
@@ -47,6 +48,10 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encodedPassword);
+
+            $role = $roleRepository->findByNameRole('user');
+            $role = $role[0];
+            $role->addUser($user);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($user);
