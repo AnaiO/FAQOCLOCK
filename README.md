@@ -8,7 +8,11 @@ IL y a un admin
  
  admin@admin.com      mot de passe admin !
 
- Pour résumer, il manque de l'inté et les bonus, un petit bug sur l'edit du profile quand on ne veut pas changer le mot de passe, ça marchait ça ne marche plus, la base !!! :) je suis en retard j'ai eu la grippe mais je vais passer la 10ème et push à temps ! 
+ Il y a des fixtures
+
+ Pour résumer, j'ai commencé le bonus du vote qui marche pour les questions mais je n'ai pas continuer pour les réponses et j'ai un petit bug sur l'edit du profile quand on ne veut pas changer le mot de passe(formevent), ça marchait ça ne marche plus, la base !!! :) je suis en retard j'ai eu 4 jours de grippe j'ai fais au mieux :/ 
+
+ Bonne expérimentation :D ! 
 
  
 
