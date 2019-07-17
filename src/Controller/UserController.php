@@ -48,9 +48,11 @@ class UserController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Vos modifications ont été sauvegardées');
+
             return $this->redirectToRoute('profile_show');
         }
-        return $this->render('user/edit.html.twig', [
+        return $this->render('user/form.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);

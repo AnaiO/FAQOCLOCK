@@ -40,7 +40,6 @@ class SignUpType extends AbstractType
                 $form->add('password', RepeatedType::class, [
                     
                     'type' => PasswordType::class,
-                    'empty_data' => ' ',
                     'invalid_message' => 'The password fields must match.',
                     'options' => ['attr' => ['class' => 'password-field']],
                     'required' => true,
@@ -60,7 +59,7 @@ class SignUpType extends AbstractType
             ->add('firstname', TextType::class, [
                 'empty_data' => '',
                 'constraints' => [
-                    new NotBlank(),
+                    
                     new Length([
                         'min'        => 3,
                         'minMessage' => 'Prénom trop court (min attendu : {{ limit }})' ,
@@ -73,7 +72,7 @@ class SignUpType extends AbstractType
             ->add('lastname', TextType::class, [
                 'empty_data' => '',
                 'constraints' => [
-                    new NotBlank(),
+                   
                     new Length([
                         'min'        => 3,
                         'minMessage' => 'Nom trop court (min attendu : {{ limit }})' ,

@@ -51,6 +51,8 @@ class TagController extends AbstractController
                     $om->flush();
                 }
 
+                $this->addFlash('success', 'Le tag a bien été créé');
+
                 return $this->redirectToRoute('backend_tag_list');
         }else{
                 return $this->render('backend/tag/form.html.twig', [
@@ -73,6 +75,8 @@ class TagController extends AbstractController
 
           $om->remove($tag);
           $om->flush();
+
+          $this->addFlash('danger', 'Le tag a bien été supprimé');
 
           return $this->redirectToRoute('backend_tag_list');
     }
