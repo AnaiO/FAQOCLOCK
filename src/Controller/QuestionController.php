@@ -125,9 +125,9 @@ class QuestionController extends AbstractController
       }
 
       /**
-       * @Route("user/question/{id}/like", name="question_like", methods={"GET", "POST"})
+       * @Route("user/question/{id}/like/{route}", name="question_like", methods={"GET", "POST"})
        */
-    public function addLike(Question $question, ObjectManager $om, Request $request)
+    public function addLike(Question $question, ObjectManager $om, Request $request, $route)
       {
         $likes = $question->getNbLikes();
         $likes += 1;
@@ -135,6 +135,13 @@ class QuestionController extends AbstractController
 
         $om->flush();
 
-        return $this->redirectToRoute("question_list");
+        
+
+        if ($route == 'homePage'){
+           return $this->redirectToRoute("question_list"); 
+        }else{
+            return $this->redirectToRoute("questions_tag", ['name' => $route]);
+        }
+        
       }
 }

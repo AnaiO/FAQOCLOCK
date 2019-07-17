@@ -50,7 +50,7 @@
                                 </a>
                             </div>
                         {% endif %}
-                        <a href="{{ path('question_like', {'id': question.id}) }}"><button class="d-flex justify-content-end">{{ question.nblikes }} votes</button></a>
+                        <a href="{{ path('question_like', {'id': question.id, 'route': 'homePage'}) }}"><button class="d-flex justify-content-end">{{ question.nblikes }} votes</button></a>
                     </div>
                 </div>
                 {% endif %}

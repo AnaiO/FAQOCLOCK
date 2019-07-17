@@ -1,29 +1,33 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
 
 <h1> <div class="container pt-2">
-        <button type="button" class="btn btn-outline-danger">{{ tag.name }}</button>
+        <button type="button" class="btn btn-info">{{ tag.name }}</button>
     </div></h1>
 {% for question in tag.questions %}
-            <a href="{{ path('question_show', {'id': question.id }) }}">
-                <div class=" text-white bg-dark mb-3" style="margin: 1rem auto; max-width: 80%;">
+           
+                <div class=" text-white bg-secondary mb-3" style="margin: 1rem auto; max-width: 80%;">
                     <div class="d-flex justify-content-center">
                         {% for tag in question.tags %}
-                            <button type="button" class="btn btn-outline-warning question--tags">{{ tag.name }}</button>
+                            <button type="button" class="btn btn-info question--tags">{{ tag.name }}</button>
                         {% endfor %}
                     </div>
                     <div class="card-header  d-flex justify-content-between">
-                        <h4 class="card-title">{{ question.title }}</h4>
+                         <a href="{{ path('question_show', {'id': question.id }) }}"><h4 class="card-title">{{ question.title }}</h4></a>
                         <span>{{ question.updatedAt|date("d/m/Y H:i", "Europe/Paris") }}</span>
                     </div>
                     
                     <div class="card-body">
                         <p class="card-text">{{ question.user.firstname }} {{ question.user.lastname }}</p>
                         <p class="card-text">{{ question.content }}</p>
+                        <a href="{{ path('question_like', {'id': question.id, 'route': tag.name }) }}">
+                            <button class="d-flex justify-content-end">{{ question.nblikes }} votes</button>
+                        </a>
                     </div>
                 </div>
-            </a>
+            
         {% endfor %}
 
 {% endblock  %}
