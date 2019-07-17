@@ -49,6 +49,11 @@ class Answer
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbLikes;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime;
@@ -141,6 +146,18 @@ class Answer
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNbLikes(): ?int
+    {
+        return $this->nbLikes;
+    }
+
+    public function setNbLikes(?int $nbLikes): self
+    {
+        $this->nbLikes = $nbLikes;
 
         return $this;
     }
