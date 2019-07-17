@@ -125,19 +125,16 @@ class QuestionController extends AbstractController
       }
 
       /**
-       * @Route("/question/{id}/delete", name="question_delete", methods={"POST"})
+       * @Route("user/question/{id}/like", name="question_like", methods={"GET", "POST"})
        */
-    public function delete(Question $question, EntityManager $em)
+    public function addLike(Question $question, ObjectManager $om, Request $request)
       {
-        // if (!$question) {
-        //     throw $this->createNotFoundException(
-        //         'Oops, la question n\'existe pas'
-        //     );
-        // }
+        $likes = $question->getNbLikes();
+        $likes += 1;
+        $question->setNbLikes($likes);
 
-        //   $em->remove($question);
-        //   $em->flush();
+        $om->flush();
 
-        //   return $this->redirectToRoute('question_list');
+        return $this->redirectToRoute("question_list");
       }
 }

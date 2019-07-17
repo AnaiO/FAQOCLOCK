@@ -59,6 +59,11 @@ class Question
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbLikes;
+
     public function __construct()
     {
         $this->answers = new ArrayCollection();
@@ -66,6 +71,7 @@ class Question
         $this->createdAt = new \DateTime;
         $this->updatedAt = new \DateTime;
         $this->status = 1;
+        $this->nbLikes = 0;
     }
 
     public function getId(): ?int
@@ -198,6 +204,18 @@ class Question
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
         }
+
+        return $this;
+    }
+
+    public function getNbLikes(): ?int
+    {
+        return $this->nbLikes;
+    }
+
+    public function setNbLikes(?int $nbLikes): self
+    {
+        $this->nbLikes = $nbLikes;
 
         return $this;
     }

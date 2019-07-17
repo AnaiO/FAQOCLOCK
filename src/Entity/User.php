@@ -76,6 +76,7 @@ class User implements UserInterface
         $this->updatedAt = new \DateTime;
         $this->status = 1;
         
+        
     
     }
 
