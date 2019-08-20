@@ -58,15 +58,6 @@ class SignUpType extends AbstractType
         $builder
             ->add('firstname', TextType::class, [
                 'empty_data' => '',
-                'constraints' => [
-                    
-                    new Length([
-                        'min'        => 3,
-                        'minMessage' => 'Prénom trop court (min attendu : {{ limit }})' ,
-                        'max'        => 255,
-                        'maxMessage' => 'Prénom trop long (max attendu : {{ limit }})' ,
-                        ])
-                ],
                 'label' => 'Prénom',
             ])
             ->add('lastname', TextType::class, [
@@ -84,15 +75,6 @@ class SignUpType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'empty_data' => '',
-                'constraints' => [
-                    new NotBlank(),
-                    new Length([
-                        'min'        => 3,
-                        'minMessage' => 'Email trop court (min attendu : {{ limit }})' ,
-                        'max'        => 255,
-                        'maxMessage' => 'Email trop long (max attendu : {{ limit }})' ,
-                        ])
-                ],
                 'label' => 'Email',
             ])
             ->addEventListener(FormEvents::PRE_SET_DATA, $listener)

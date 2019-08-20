@@ -21,26 +21,10 @@ class QuestionType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'empty_data' => '',
-                'constraints' => [
-                    new NotBlank(),
-                    new Length([
-                        'min'        => 3,
-                        'minMessage' => 'Titre trop court (min attendu : {{ limit }})' ,
-                        'max'        => 255,
-                        'maxMessage' => 'Titre trop long (max attendu : {{ limit }})' ,
-                        ])
-                ],
                 'label' => 'Titre',
             ])
             ->add('content', TextareaType::class, [
                 'empty_data' => '',
-                'constraints' => [
-                    new NotBlank(),
-                    new Length([
-                        'min'        => 30,
-                        'minMessage' => 'Contenu trop court (min attendu : {{ limit }})' ,
-                        ])
-                ],
                 'label' => 'Contenu',
             ])
             ->add('tags', EntityType::class, [

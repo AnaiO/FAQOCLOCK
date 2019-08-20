@@ -96,11 +96,12 @@ class QuestionController extends AbstractController
         $form = $this->createForm(QuestionType::class, $question);
 
         if ($request->isMethod('POST')) {
-                
+               
                 $form->handleRequest($request);
-            
-            
+             
                 if($form->isSubmitted() && $form->isValid()){
+                    dd($form);
+            
                     $user = $security->getUser();
                     $user->addQuestion($question);
                     
@@ -111,6 +112,7 @@ class QuestionController extends AbstractController
                    $question->setUpdatedAt(new \DateTime());
                    
                     $om->persist($question);
+                    
                     $om->flush();
                 }
 

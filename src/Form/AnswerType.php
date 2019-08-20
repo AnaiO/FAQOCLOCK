@@ -16,14 +16,6 @@ class AnswerType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                
-                'constraints' => [
-                    new NotBlank(),
-                    new Length([
-                        'min'        => 3,
-                        'minMessage' => 'Réponse trop courte (min attendu : {{ limit }})' ,
-                        ])
-                ],
                 'label' => false,
             ])
             
