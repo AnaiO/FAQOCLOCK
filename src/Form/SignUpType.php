@@ -62,15 +62,6 @@ class SignUpType extends AbstractType
             ])
             ->add('lastname', TextType::class, [
                 'empty_data' => '',
-                'constraints' => [
-                   
-                    new Length([
-                        'min'        => 3,
-                        'minMessage' => 'Nom trop court (min attendu : {{ limit }})' ,
-                        'max'        => 255,
-                        'maxMessage' => 'Nom trop long (max attendu : {{ limit }})' ,
-                        ])
-                ],
                 'label' => 'Nom',
             ])
             ->add('email', EmailType::class, [

@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class QuestionController extends AbstractController
@@ -88,7 +89,7 @@ class QuestionController extends AbstractController
       * @Route("/user/question/ask", name="question_ask", methods={"POST", "GET"})
       * 
       */
-    public function form(Security $security, Question $question=null, ObjectManager $om, Request $request)
+    public function form(Security $security, Question $question=null, ObjectManager $om, Request $request, ValidatorInterface $validator)
       { 
         $question = new Question;
         
@@ -98,9 +99,11 @@ class QuestionController extends AbstractController
         if ($request->isMethod('POST')) {
                
                 $form->handleRequest($request);
-             
+
+                
+              
+
                 if($form->isSubmitted() && $form->isValid()){
-                    // dd($form);
             
                     $user = $security->getUser();
                     $user->addQuestion($question);
@@ -112,19 +115,25 @@ class QuestionController extends AbstractController
                    $question->setUpdatedAt(new \DateTime());
                    
                     $om->persist($question);
-                    
                     $om->flush();
+                    
+                    return $this->redirectToRoute('question_list');
                 }
 
-                return $this->redirectToRoute('question_list');
-        }else{
-
                 return $this->render('question/form.html.twig', [
-                'form' => $form->createView()
+                    'form' => $form->createView(),
+                    
+                ]);
+                
+        }else{
+                
+                return $this->render('question/form.html.twig', [
+                'form' => $form->createView(),
+                
             ]);
         }    
 
-      }
+    }
 
       /**
        * @Route("user/question/{id}/like/{route}", name="question_like", methods={"GET", "POST"})
