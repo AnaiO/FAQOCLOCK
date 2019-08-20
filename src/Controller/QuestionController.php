@@ -100,7 +100,7 @@ class QuestionController extends AbstractController
                 $form->handleRequest($request);
              
                 if($form->isSubmitted() && $form->isValid()){
-                    dd($form);
+                    // dd($form);
             
                     $user = $security->getUser();
                     $user->addQuestion($question);
