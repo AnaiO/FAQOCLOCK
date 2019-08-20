@@ -4,60 +4,59 @@ App\Entity\Question:
             - Length:
                 min: 3
                 max: 255
-                minMessage: 'Your first name must be at least {{ limit }} characters long'
-                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
-            - NotBlank: ~
+                minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
+                maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
+            - NotBlank: { message: 'Ce champs ne doit pas être vide' }
         content:
             - Length:
                 min: 3
                 max: 500
-                minMessage: 'Your first name must be at least {{ limit }} characters long'
-                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
-            - NotBlank: ~
+                minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
+                maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
+            - NotBlank: { message: 'Ce champs ne doit pas être vide' }
         tags:
             - Count:
                 min: 1
-                minMessage: 'You need to choose at least {{ limit }} tag'
-            - NotNull: ~
+                minMessage: 'Choisissez au moins {{ limit }} tag'
 App\Entity\Answer:
     properties:
         content:
             - Length:
                 min: 3
                 max: 255
-                minMessage: 'Your first name must be at least {{ limit }} characters long'
-                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
-            - NotBlank: ~
+                minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
+                maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
+            - NotBlank: { message: 'Ce champs ne doit pas être vide' }
 App\Entity\Tag:
     properties:
         name:
             - Length:
                 min: 3
                 max: 50
-                minMessage: 'Your first name must be at least {{ limit }} characters long'
-                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
-            - NotBlank: ~
+                minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
+                maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
+            - NotBlank: { message: 'Ce champs ne doit pas être vide' }
 App\Entity\User:
     properties:
         firstname:
             - Length:
                 min: 3
                 max: 50
-                minMessage: 'Your first name must be at least {{ limit }} characters long'
-                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
-            - NotBlank: ~
+                minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
+                maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
+            - NotBlank: { message: 'Ce champs ne doit pas être vide' }
         lastname:
             - Length:
                 min: 3
                 max: 50
-                minMessage: 'Your first name must be at least {{ limit }} characters long'
-                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
-            - NotBlank: ~
+                minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
+                maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
+            - NotBlank: { message: 'Ce champs ne doit pas être vide' }
         email:
             - Length:
                 min: 3
                 max: 255
-                minMessage: 'Your first name must be at least {{ limit }} characters long'
-                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
-            - NotBlank: ~
+                minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
+                maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
+            - NotBlank: { message: 'Ce champs ne doit pas être vide' }
         
