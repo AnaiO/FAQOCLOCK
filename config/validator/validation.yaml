@@ -6,9 +6,53 @@ App\Entity\Question:
                 max: 255
                 minMessage: 'Your first name must be at least {{ limit }} characters long'
                 maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - NotBlank: ~
         content:
             - Length:
                 min: 3
                 max: 500
                 minMessage: 'Your first name must be at least {{ limit }} characters long'
                 maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - NotBlank: ~
+App\Entity\Answer:
+    properties:
+        content:
+            - Length:
+                min: 3
+                max: 255
+                minMessage: 'Your first name must be at least {{ limit }} characters long'
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - NotBlank: ~
+App\Entity\Tag:
+    properties:
+        name:
+            - Length:
+                min: 3
+                max: 50
+                minMessage: 'Your first name must be at least {{ limit }} characters long'
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - NotBlank: ~
+App\Entity\Question:
+    properties:
+        firstname:
+            - Length:
+                min: 3
+                max: 50
+                minMessage: 'Your first name must be at least {{ limit }} characters long'
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - NotBlank: ~
+        lastname:
+            - Length:
+                min: 3
+                max: 50
+                minMessage: 'Your first name must be at least {{ limit }} characters long'
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - NotBlank: ~
+        email:
+            - Length:
+                min: 3
+                max: 255
+                minMessage: 'Your first name must be at least {{ limit }} characters long'
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+            - NotBlank: ~
+        
