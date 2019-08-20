@@ -23,7 +23,7 @@ App\Entity\Answer:
         content:
             - Length:
                 min: 3
-                max: 255
+                max: 500
                 minMessage: 'Ce champs doit contenir au moins {{ limit }} caractères'
                 maxMessage: 'Ce champs ne doit pas dépasser {{ limit }} caractères'
             - NotBlank: { message: 'Ce champs ne doit pas être vide' }

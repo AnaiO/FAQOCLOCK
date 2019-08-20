@@ -2,16 +2,17 @@
 
 <div>
     {{ form_start(form, {'attr' : {'class': 'answer--form'}} ) }}
-    <div class="my-custom-class-for-errors">
-        {{ form_errors(form) }}
-    </div>
+    <div>{{ form_errors(form.content)}}</div>
 
     <div class="form--answer">
         <div class="col">
             {{ form_row(form.content, {'attr' : {'placeholder': 'Ecrire une réponse'}} ) }}
-        </div> 
-      <a href="{{ path('question_show', {'id': question.id })}}"> <button class="d-flex justify-content-end form--button" type="submit"> Envoyer </button></a> 
+         </div> 
+      <a href="{{ path('question_show', {'id': question.id })}}"> 
+          <button class="d-flex justify-content-end form--button" type="submit"> Envoyer </button>
+      </a> 
     </div>
    
     {{ form_end(form) }}
 </div>
+

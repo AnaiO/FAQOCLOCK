@@ -35,47 +35,6 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/question/{id}", name="question_show", methods={"GET", "POST"}, requirements={"id"="\d+"})
-     */
-    public function show(Security $security, Question $question, AnswerRepository $answerRepository, Request $request, ObjectManager $om)
-    {
-        if(!$question){
-            throw $this->createNotFoundException('La question est introuvable');
-        }
-        $answers = $answerRepository->findByQuestion($question);
-
-        $answer = new Answer();
-
-        $form = $this->createForm(AnswerType::class, $answer);
-
-        if ($request->isMethod('POST')) {
-                
-                $form->handleRequest($request);
-            
-            
-                if($form->isSubmitted() && $form->isValid()){
-                    $user = $security->getUser();
-                    $user->addAnswer($answer);
-
-                    $question->addAnswer($answer);
-
-                    $om->persist($answer);
-                    $om->flush();
-                }
-
-                return $this->redirectToRoute('question_show', ["id" => $question->getId()]);
-        }else{
-               return $this->render('question/show.html.twig', [
-                    'question' => $question,
-                    'answers' => $answers,
-                    'form' => $form->createView()
-                ]);  
-        }    
-
-       
-    }
-
-    /**
      * @Route("/question/tag/{name}", name="questions_tag", methods={"GET"})
      */
     public function listByTag(Tag $tag)
@@ -89,7 +48,7 @@ class QuestionController extends AbstractController
       * @Route("/user/question/ask", name="question_ask", methods={"POST", "GET"})
       * 
       */
-    public function form(Security $security, Question $question=null, ObjectManager $om, Request $request, ValidatorInterface $validator)
+    public function form(Security $security, Question $question=null, ObjectManager $om, Request $request)
       { 
         $question = new Question;
         
@@ -99,9 +58,6 @@ class QuestionController extends AbstractController
         if ($request->isMethod('POST')) {
                
                 $form->handleRequest($request);
-
-                
-              
 
                 if($form->isSubmitted() && $form->isValid()){
             
