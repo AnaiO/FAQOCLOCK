@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class QuestionController extends AbstractController
 {
     /**
-     * @Route("/Backend/question/{id}/toggle", name="backend_question_toggle", methods={"GET", "POST"})
+     * @Route("/backend/question/{id}/toggle", name="backend_question_toggle", methods={"GET", "POST"})
      */
     public function toggle(Question $question, ObjectManager $om)
     {
