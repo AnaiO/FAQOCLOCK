@@ -4,7 +4,7 @@ Site de questions ouvertes (façon quora/ stackoverflow) que tous les visiteurs 
 
 Devoir effectué en 5 jours à la fin d'une formation d'un mois exclusivement sur le framework Symfony après 5 mois de formation auprès de l'organisme o'Clock labélisé grande école du numérique.
 
-J'ai mis tout ce qui se rapporte à la conception dans le repo "conception", avec les *user stories, le Mocodo et les routes*.
+J'ai mis tout ce qui se rapporte à la conception dans le dossier "conception", avec les *user stories, le Mocodo et les routes*.
 
 IL y a un admin
  
